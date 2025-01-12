@@ -229,7 +229,7 @@ namespace ProductStore;
             options.DefaultResourceType = typeof(ProductStoreResource);*/
             
             options.Resources
-                .Add<ValidationResource>("ar")
+                .Add<ValidationResource>("en")
                 .AddBaseTypes(typeof(AbpValidationResource))
                 .AddVirtualJson("/Localization/Validations");
 

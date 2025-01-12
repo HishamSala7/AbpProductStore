@@ -1,28 +1,14 @@
 {
   "culture": "ar",
-  "Validation": {
-    "Category": {
-      "NameRequired": "اسم الفئة مطلوب.",
-      "NameMaxLength": "يجب ألا يتجاوز اسم الفئة 50 حرفًا.",
-      "NameUnique": "الفئة بهذا الاسم موجودة بالفعل.",
-      "NotFound": "الفئة المحددة غير موجودة."
-    },
-    "Product": {
-      "NameRequired": "اسم المنتج مطلوب.",
-      "NameMaxLength": "يجب ألا يتجاوز اسم المنتج 100 حرف.",
-      "PricePositive": "يجب أن يكون السعر أكبر من الصفر.",
-      "StockNonNegative": "لا يمكن أن تكون الكمية في المخزون سالبة.",
-      "CategoryIdRequired": "معرف الفئة مطلوب.",
-      "NotFound": "المنتج المحدد غير موجود."
-    },
-    "Order": {
-      "OrderDateRequired": "تاريخ الطلب مطلوب.",
-      "TotalAmountPositive": "يجب أن يكون المبلغ الإجمالي أكبر من الصفر.",
-      "DetailsRequired": "تفاصيل الطلب مطلوبة.",
-      "DetailsProductIdRequired": "معرف المنتج في تفاصيل الطلب مطلوب.",
-      "DetailsQuantityPositive": "يجب أن تكون الكمية في تفاصيل الطلب أكبر من الصفر.",
-      "DetailsUnitPricePositive": "يجب أن يكون سعر الوحدة في تفاصيل الطلب أكبر من الصفر.",
-      "NotFound": "الطلب المحدد غير موجود."
-    }
+  "texts": {
+
+    "NameRequired": "الاسم الأول مطلوب.",
+    "FirstNameLength": "يجب أن يكون الاسم الأول بين 2 و 50 حرفًا.",
+    "LastNameRequired": "اسم العائلة مطلوب.",
+    "LastNameLength": "يجب أن يكون اسم العائلة بين 2 و 50 حرفًا.",
+    "EmailRequired": "البريد الإلكتروني مطلوب.",
+    "InvalidEmail": "تنسيق البريد الإلكتروني غير صالح.",
+    "InvalidDateOfBirth": "يجب أن يكون تاريخ الميلاد في الماضي."
   }
+
 }
