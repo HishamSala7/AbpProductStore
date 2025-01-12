@@ -213,12 +213,12 @@ namespace ProductStore;
     {
         Configure<AbpLocalizationOptions>(options =>
         {
-            options.Resources
+      /*      options.Resources
                 .Add<ProductStoreResource>("en")
                 .AddBaseTypes(typeof(AbpValidationResource))
                 .AddVirtualJson("/Localization/ProductStore");
 
-            options.DefaultResourceType = typeof(ProductStoreResource);
+            options.DefaultResourceType = typeof(ProductStoreResource);*/
             
             options.Resources
                 .Add<ValidationResource>("ar")
