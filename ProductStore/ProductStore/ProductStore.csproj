@@ -103,8 +103,4 @@
     <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Entities\EntitiesConfiguration\" />
-  </ItemGroup>
-
 </Project>

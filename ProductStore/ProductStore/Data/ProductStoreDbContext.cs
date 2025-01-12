@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProductStore.Entities;
+using ProductStore.Entities.EntitiesConfiguration;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
@@ -38,5 +39,12 @@ public class ProductStoreDbContext : AbpDbContext<ProductStoreDbContext>
         builder.ConfigureTenantManagement();
 
         /* Configure your own entities here */
+
+        builder.ApplyConfigurationsFromAssembly(typeof(ProductStoreDbContext).Assembly); 
+
+        //builder.ApplyConfiguration(new ProductConfiguration());
+        //builder.ApplyConfiguration(new CategoryConfiguration());
+        //builder.ApplyConfiguration(new OrderConfiguration());
+        //builder.ApplyConfiguration(new OrderDetailsConfiguration());
     }
 }
