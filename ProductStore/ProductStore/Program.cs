@@ -1,6 +1,8 @@
+using NpgsqlTypes;
 using ProductStore.Data;
 using Serilog;
 using Serilog.Events;
+using Serilog.Sinks.PostgreSQL;
 using Volo.Abp.Data;
 
 namespace ProductStore;
@@ -21,8 +23,36 @@ public class Program
             .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
             .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
             .Enrich.FromLogContext()
+            .Enrich.WithProcessId()      // Adds process ID
+            .Enrich.WithThreadId()       // Adds thread ID
+            .Enrich.WithMachineName()    // Adds machine name
             .WriteTo.Async(c => c.File("Logs/logs.txt"))
-            .WriteTo.Async(c => c.Console());
+            .WriteTo.Async(c => c.Console())
+            .WriteTo.Async(c => c.PostgreSQL(
+                connectionString: "Host=your_postgres_host;Database=your_database;Username=your_username;Password=your_password;",
+                tableName: "logging",
+                needAutoCreateTable: true,
+                columnOptions: new Dictionary<string, ColumnWriterBase>
+                {
+                    { "message", new RenderedMessageColumnWriter() },
+                    { "message_template", new MessageTemplateColumnWriter() },
+                    { "level", new LevelColumnWriter(true, NpgsqlDbType.Text) },
+                    { "time_stamp", new TimestampColumnWriter(NpgsqlDbType.TimestampTz) },
+                    { "exception", new ExceptionColumnWriter() },
+                    { "process_id", new SinglePropertyColumnWriter("ProcessId", PropertyWriteMethod.Raw) },
+                    { "thread_id", new SinglePropertyColumnWriter("ThreadId", PropertyWriteMethod.Raw) },
+                    { "machine_name", new SinglePropertyColumnWriter("MachineName",  PropertyWriteMethod.Raw) }
+                }));
+
+        //.MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+        //.MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
+        //.Enrich.FromLogContext()
+        //.Enrich.WithProcessId()      // Add Process ID
+        //.Enrich.WithMachineName()    // Add Machine Name
+        //.Enrich.WithThreadId()
+        //.WriteTo.Async(c => c.File("Logs/logs.txt"))
+        //.WriteTo.Async(c => c.Console());
+
 
         if (IsMigrateDatabase(args))
         {
@@ -31,6 +61,7 @@ public class Program
         }
 
         Log.Logger = loggerConfiguration.CreateLogger();
+
 
         try
         {
