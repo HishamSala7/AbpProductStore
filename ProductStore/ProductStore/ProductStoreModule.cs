@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -48,6 +48,7 @@ using Volo.Abp.Security.Claims;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
+using Volo.Abp.FluentValidation;
 
 namespace ProductStore;
 
@@ -98,7 +99,8 @@ namespace ProductStore;
     typeof(AbpSettingManagementEntityFrameworkCoreModule),
     typeof(AbpSettingManagementHttpApiModule)
 )]
-public class ProductStoreModule : AbpModule
+[DependsOn(typeof(AbpFluentValidationModule))]
+    public class ProductStoreModule : AbpModule
 {
     /* Single point to enable/disable multi-tenancy */
     private const bool IsMultiTenant = true;
@@ -211,17 +213,24 @@ public class ProductStoreModule : AbpModule
     {
         Configure<AbpLocalizationOptions>(options =>
         {
-            options.Resources
+      /*      options.Resources
                 .Add<ProductStoreResource>("en")
                 .AddBaseTypes(typeof(AbpValidationResource))
                 .AddVirtualJson("/Localization/ProductStore");
 
-            options.DefaultResourceType = typeof(ProductStoreResource);
+            options.DefaultResourceType = typeof(ProductStoreResource);*/
+            
+            options.Resources
+                .Add<ValidationResource>("ar")
+                .AddBaseTypes(typeof(AbpValidationResource))
+                .AddVirtualJson("/Localization/Validations");
+
+            options.DefaultResourceType = typeof(ValidationResource);
 
             options.Languages.Add(new LanguageInfo("en", "en", "English"));
-            options.Languages.Add(new LanguageInfo("tr", "tr", "Türkçe"));
+          /*  options.Languages.Add(new LanguageInfo("tr", "tr", "Türkçe"));*/
             options.Languages.Add(new LanguageInfo("ar", "ar", "العربية"));
-            options.Languages.Add(new LanguageInfo("cs", "cs", "Čeština"));
+           /* options.Languages.Add(new LanguageInfo("cs", "cs", "Čeština"));
             options.Languages.Add(new LanguageInfo("en-GB", "en-GB", "English (UK)"));
             options.Languages.Add(new LanguageInfo("hu", "hu", "Magyar"));
             options.Languages.Add(new LanguageInfo("fi", "fi", "Finnish"));
@@ -237,7 +246,7 @@ public class ProductStoreModule : AbpModule
             options.Languages.Add(new LanguageInfo("zh-Hant", "zh-Hant", "繁體中文"));
             options.Languages.Add(new LanguageInfo("de-DE", "de-DE", "Deutsch"));
             options.Languages.Add(new LanguageInfo("es", "es", "Español"));
-            options.Languages.Add(new LanguageInfo("el", "el", "Ελληνικά"));
+            options.Languages.Add(new LanguageInfo("el", "el", "Ελληνικά"));*/
         });
 
         Configure<AbpExceptionLocalizationOptions>(options =>
