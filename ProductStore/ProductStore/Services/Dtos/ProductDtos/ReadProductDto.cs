@@ -10,6 +10,6 @@ namespace ProductStore.Services.Dtos.ReadProductDtos
         public int StockQuantity { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
-        public List<OrderDetailsDto> OrderDetails { get; set; } = new();
+        public List<ReadOrderDetailsDto> OrderDetails { get; set; } = new();
     }
 }

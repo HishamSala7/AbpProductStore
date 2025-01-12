@@ -49,6 +49,7 @@ using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
 using Volo.Abp.FluentValidation;
+using FluentValidation.AspNetCore;
 
 namespace ProductStore;
 
@@ -97,9 +98,12 @@ namespace ProductStore;
     // Setting Management module packages
     typeof(AbpSettingManagementApplicationModule),
     typeof(AbpSettingManagementEntityFrameworkCoreModule),
-    typeof(AbpSettingManagementHttpApiModule)
+    typeof(AbpSettingManagementHttpApiModule),
+
+    //fluent validation module package
+    typeof(AbpFluentValidationModule)
+
 )]
-[DependsOn(typeof(AbpFluentValidationModule))]
     public class ProductStoreModule : AbpModule
 {
     /* Single point to enable/disable multi-tenancy */
@@ -154,6 +158,8 @@ namespace ProductStore;
         {
             context.Services.Replace(ServiceDescriptor.Singleton<IEmailSender, NullEmailSender>());
         }
+
+        context.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 
         ConfigureAuthentication(context);
         ConfigureBundles();
