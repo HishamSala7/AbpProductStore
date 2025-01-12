@@ -22,12 +22,7 @@
                 .MaximumLength(50)
                 .WithMessage(_localizer["Validation:Category:NameMaxLength"]);
 
-            RuleFor(x => x.Name)
-                .MustAsync(async (name, cancellation) =>
-                {
-                    return await categoryRepository.FirstOrDefaultAsync(c => c.Name == name) == null;
-                })
-                .WithMessage(_localizer["Validation:Category:NameUnique"]);
+            
         }
     }
 

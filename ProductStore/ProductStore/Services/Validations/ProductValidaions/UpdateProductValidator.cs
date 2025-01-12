@@ -14,12 +14,12 @@
         {
             RuleFor(x => x.Id)
                 .NotEmpty()
-                .WithMessage(localizer["Validation:Product:NotFound"])
-                .MustAsync(async (id, cancellation) =>
+                .WithMessage(localizer["Validation:Product:NotFound"]);
+                /*.MustAsync(async (id, cancellation) =>
                 {
                     return await productRepository.AnyAsync(p => p.Id == id);
                 })
-                .WithMessage(localizer["Validation:Product:NotFound"]);
+                .WithMessage(localizer["Validation:Product:NotFound"]);*/
 
             RuleFor(x => x.Name)
                 .NotEmpty()
@@ -35,12 +35,12 @@
                 .GreaterThanOrEqualTo(0)
                 .WithMessage(localizer["Validation:Product:StockNonNegative"]);
 
-            RuleFor(x => x.CategoryId)
+            /*RuleFor(x => x.CategoryId)
                 .MustAsync(async (categoryId, cancellation) =>
                 {
                     return await categoryRepository.AnyAsync(c => c.Id == categoryId);
                 })
-                .WithMessage(localizer["Validation:Category:NotFound"]);
+                .WithMessage(localizer["Validation:Category:NotFound"]);*/
         }
     }
 

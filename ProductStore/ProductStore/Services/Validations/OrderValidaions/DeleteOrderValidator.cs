@@ -13,12 +13,12 @@
         {
             RuleFor(id => id)
                 .NotEmpty()
-                .WithMessage(localizer["Validation:Order:NotFound"])
-                .MustAsync(async (id, cancellation) =>
+                .WithMessage(localizer["Validation:Order:NotFound"]);
+                /*.MustAsync(async (id, cancellation) =>
                 {
                     return await orderRepository.AnyAsync(o => o.Id == id);
                 })
-                .WithMessage(localizer["Validation:Order:NotFound"]);
+                .WithMessage(localizer["Validation:Order:NotFound"]);*/
         }
     }
 

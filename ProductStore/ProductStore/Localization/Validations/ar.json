@@ -1,36 +1,28 @@
 {
-  "culture": {
-    "language": "en",
-    "name": "English",
-    "dateFormat": "MM/dd/yyyy",
-    "timeFormat": "hh:mm tt",
-    "decimalSeparator": ".",
-    "thousandsSeparator": ",",
-    "currencySymbol": "$"
-  },
+  "culture": "ar",
   "Validation": {
     "Category": {
-      "NameRequired": "Category name is required.",
-      "NameMaxLength": "Category name must not exceed 50 characters.",
-      "NameUnique": "A category with the same name already exists.",
-      "NotFound": "The specified category does not exist."
+      "NameRequired": "اسم الفئة مطلوب.",
+      "NameMaxLength": "يجب ألا يتجاوز اسم الفئة 50 حرفًا.",
+      "NameUnique": "الفئة بهذا الاسم موجودة بالفعل.",
+      "NotFound": "الفئة المحددة غير موجودة."
     },
     "Product": {
-      "NameRequired": "Product name is required.",
-      "NameMaxLength": "Product name must not exceed 100 characters.",
-      "PricePositive": "Price must be greater than zero.",
-      "StockNonNegative": "Stock quantity cannot be negative.",
-      "CategoryIdRequired": "Category ID is required.",
-      "NotFound": "The specified product does not exist."
+      "NameRequired": "اسم المنتج مطلوب.",
+      "NameMaxLength": "يجب ألا يتجاوز اسم المنتج 100 حرف.",
+      "PricePositive": "يجب أن يكون السعر أكبر من الصفر.",
+      "StockNonNegative": "لا يمكن أن تكون الكمية في المخزون سالبة.",
+      "CategoryIdRequired": "معرف الفئة مطلوب.",
+      "NotFound": "المنتج المحدد غير موجود."
     },
     "Order": {
-      "OrderDateRequired": "Order date is required.",
-      "TotalAmountPositive": "Total amount must be greater than zero.",
-      "DetailsRequired": "Order details are required.",
-      "DetailsProductIdRequired": "Product ID in order details is required.",
-      "DetailsQuantityPositive": "Quantity in order details must be greater than zero.",
-      "DetailsUnitPricePositive": "Unit price in order details must be greater than zero.",
-      "NotFound": "The specified order does not exist."
+      "OrderDateRequired": "تاريخ الطلب مطلوب.",
+      "TotalAmountPositive": "يجب أن يكون المبلغ الإجمالي أكبر من الصفر.",
+      "DetailsRequired": "تفاصيل الطلب مطلوبة.",
+      "DetailsProductIdRequired": "معرف المنتج في تفاصيل الطلب مطلوب.",
+      "DetailsQuantityPositive": "يجب أن تكون الكمية في تفاصيل الطلب أكبر من الصفر.",
+      "DetailsUnitPricePositive": "يجب أن يكون سعر الوحدة في تفاصيل الطلب أكبر من الصفر.",
+      "NotFound": "الطلب المحدد غير موجود."
     }
   }
 }

@@ -28,19 +28,19 @@
 
             RuleFor(x => x.CategoryId)
                 .NotEmpty()
-                .WithMessage(localizer["Validation:Product:CategoryIdRequired"])
-                .MustAsync(async (categoryId, cancellation) =>
+                .WithMessage(localizer["Validation:Product:CategoryIdRequired"]);
+               /* .MustAsync(async (categoryId, cancellation) =>
                 {
                     return await categoryRepository.AnyAsync(c => c.Id == categoryId);
                 })
-                .WithMessage(localizer["Validation:Category:NotFound"]);
+                .WithMessage(localizer["Validation:Category:NotFound"]);*/
 
-            RuleFor(x => x.Name)
+          /*  RuleFor(x => x.Name)
                 .MustAsync(async (name, cancellation) =>
                 {
                     return await productRepository.FirstOrDefaultAsync(p => p.Name == name) == null;
                 })
-                .WithMessage(localizer["Validation:Product:NameUnique"]);
+                .WithMessage(localizer["Validation:Product:NameUnique"]);*/
         }
     }
 
