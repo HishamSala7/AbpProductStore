@@ -14,11 +14,11 @@
             RuleFor(id => id)
                 .NotEmpty()
                 .WithMessage(localizer["Validation:Product:NotFound"])
-                .MustAsync(async (id, cancellation) =>
+               ; /*.MustAsync(async (id, cancellation) =>
                 {
                     return await productRepository.AnyAsync(p => p.Id == id);
                 })
-                .WithMessage(localizer["Validation:Product:NotFound"]);
+                .WithMessage(localizer["Validation:Product:NotFound"]);*/
         }
     }
 
