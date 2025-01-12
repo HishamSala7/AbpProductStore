@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.2" />
     <PackageReference Include="Serilog.Sinks.Async" Version="2.0.0" />
+    <PackageReference Include="Volo.Abp.FluentValidation" Version="9.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -101,6 +102,16 @@
 
   <ItemGroup>
     <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Localization\Validations\ar.json" />
+    <Content Remove="Localization\Validations\en.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Validations\ar.json" />
+    <EmbeddedResource Include="Localization\Validations\en.json" />
   </ItemGroup>
 
   <ItemGroup>
