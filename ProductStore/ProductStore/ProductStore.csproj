@@ -104,10 +104,8 @@
     <Content Remove="$(UserProfile)\.nuget\packages\*\*\contentFiles\any\*\*.abppkg*" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Remove="Localization\Validations\ar.json" />
-    <Content Remove="Localization\Validations\en.json" />
-  </ItemGroup>
+
+
 
   <ItemGroup>
     <EmbeddedResource Include="Localization\Validations\ar.json" />
@@ -117,5 +115,6 @@
   <ItemGroup>
     <Folder Include="Entities\EntitiesConfiguration\" />
   </ItemGroup>
+
 
 </Project>
