@@ -4,14 +4,23 @@
     using Microsoft.Extensions.Localization;
     using ProductStore.Entities;
     using ProductStore.Localization;
-    using ProductStore.Services.Dtos.ReadProductDtos;
+    using ProductStore.Services.Dtos.ProductDtos;
     using Volo.Abp.Domain.Repositories;
     using Volo.Abp.Localization;
 
-    public class ProductCreateValidator : AbstractValidator<CreateProductDto>
+    public class UpdateProductValidator : AbstractValidator<UpdateProductDto>
     {
-        public ProductCreateValidator(IStringLocalizer<ValidationResource> localizer, IRepository<Category, int> categoryRepository, IRepository<Product, int> productRepository)
+        public UpdateProductValidator(IStringLocalizer<ValidationResource> localizer, IRepository<Product, int> productRepository, IRepository<Category, int> categoryRepository)
         {
+            RuleFor(x => x.Id)
+                .NotEmpty()
+                .WithMessage(localizer["Validation:Product:NotFound"])
+                .MustAsync(async (id, cancellation) =>
+                {
+                    return await productRepository.AnyAsync(p => p.Id == id);
+                })
+                .WithMessage(localizer["Validation:Product:NotFound"]);
+
             RuleFor(x => x.Name)
                 .NotEmpty()
                 .WithMessage(localizer["Validation:Product:NameRequired"])
@@ -27,22 +36,12 @@
                 .WithMessage(localizer["Validation:Product:StockNonNegative"]);
 
             RuleFor(x => x.CategoryId)
-                .NotEmpty()
-                .WithMessage(localizer["Validation:Product:CategoryIdRequired"])
                 .MustAsync(async (categoryId, cancellation) =>
                 {
                     return await categoryRepository.AnyAsync(c => c.Id == categoryId);
                 })
                 .WithMessage(localizer["Validation:Category:NotFound"]);
-
-            RuleFor(x => x.Name)
-                .MustAsync(async (name, cancellation) =>
-                {
-                    return await productRepository.FirstOrDefaultAsync(p => p.Name == name) == null;
-                })
-                .WithMessage(localizer["Validation:Product:NameUnique"]);
         }
     }
-
 
 }

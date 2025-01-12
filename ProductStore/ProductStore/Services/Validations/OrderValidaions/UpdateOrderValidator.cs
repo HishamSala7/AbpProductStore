@@ -8,9 +8,9 @@
     using ProductStore.Services.Dtos.OrderDtos;
     using Volo.Abp.Localization;
 
-    public class OrderUpdateValidator : AbstractValidator<UpdateOrderDto>
+    public class UpdateOrderValidator : AbstractValidator<UpdateOrderDto>
     {
-        public OrderUpdateValidator(IStringLocalizer<ValidationResource> localizer)
+        public UpdateOrderValidator(IStringLocalizer<ValidationResource> localizer)
         {
             RuleFor(x => x.Id)
                 .NotEmpty()
