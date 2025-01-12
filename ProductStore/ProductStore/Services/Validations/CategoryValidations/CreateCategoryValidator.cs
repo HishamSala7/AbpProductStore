@@ -18,16 +18,16 @@
 
             RuleFor(x => x.Name)
                 .NotEmpty()
-                .WithMessage(_localizer["Validation:Category:NameRequired"])
+                .WithMessage("name is requi")
                 .MaximumLength(50)
                 .WithMessage(_localizer["Validation:Category:NameMaxLength"]);
 
-            RuleFor(x => x.Name)
+           /* RuleFor(x => x.Name)
                 .MustAsync(async (name, cancellation) =>
                 {
                     return await categoryRepository.FirstOrDefaultAsync(c => c.Name == name) == null;
                 })
-                .WithMessage(_localizer["Validation:Category:NameUnique"]);
+                .WithMessage(_localizer["Validation:Category:NameUnique"]);*/
         }
     }
 

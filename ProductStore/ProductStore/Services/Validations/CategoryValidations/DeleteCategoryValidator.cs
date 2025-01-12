@@ -13,12 +13,12 @@
         {
             RuleFor(id => id)
                 .NotEmpty()
-                .WithMessage(localizer["Validation:Category:NotFound"])
-                .MustAsync(async (id, cancellation) =>
+                .WithMessage(localizer["Validation:Category:NotFound"]);
+                ./*MustAsync(async (id, cancellation) =>
                 {
                     return await categoryRepository.AnyAsync(c => c.Id == id);
                 })
-                .WithMessage(localizer["Validation:Category:NotFound"]);
+                .WithMessage(localizer["Validation:Category:NotFound"]);*/
         }
     }
 

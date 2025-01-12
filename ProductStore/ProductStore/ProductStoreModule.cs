@@ -101,7 +101,9 @@ namespace ProductStore;
     typeof(AbpSettingManagementHttpApiModule),
 
     //fluent validation module package
-    typeof(AbpFluentValidationModule)
+    typeof(AbpFluentValidationModule),
+
+    typeof(AbpLocalizationModule)
 
 )]
     public class ProductStoreModule : AbpModule
