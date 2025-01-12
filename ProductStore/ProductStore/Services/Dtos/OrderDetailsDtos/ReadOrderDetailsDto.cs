@@ -1,6 +1,6 @@
 ﻿namespace ProductStore.Services.Dtos.OrderDetailsDtos
 {
-    public class OrderDetailsDto
+    public class ReadOrderDetailsDto
     {
         public int Id { get; set; }
         public int ProductId { get; set; }

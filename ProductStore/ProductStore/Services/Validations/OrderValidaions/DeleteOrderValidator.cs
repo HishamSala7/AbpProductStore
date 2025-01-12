@@ -7,9 +7,9 @@
     using Volo.Abp.Domain.Repositories;
     using Volo.Abp.Localization;
 
-    public class OrderDeleteValidator : AbstractValidator<int>
+    public class DeleteOrderValidator : AbstractValidator<int>
     {
-        public OrderDeleteValidator(IStringLocalizer<ValidationResource> localizer, IRepository<Order, int> orderRepository)
+        public DeleteOrderValidator(IStringLocalizer<ValidationResource> localizer, IRepository<Order, int> orderRepository)
         {
             RuleFor(id => id)
                 .NotEmpty()
