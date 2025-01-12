@@ -1,5 +1,6 @@
 ﻿using NUglify.Html;
 using ProductStore.Entities;
+using ProductStore.Services.Dtos.ProductDtos;
 using ProductStore.Services.Dtos.ReadProductDtos;
 using Volo.Abp.Domain.Repositories;
 
@@ -34,6 +35,24 @@ namespace ProductStore.Services.ProductService
 
             return ObjectMapper.Map<Product, ReadProductDto>(insertedProduct);
         }
+
+        public async Task<ReadProductDto> UpdateAsync(UpdateProductDto productDto)
+        {
+            var productDb = await _productRepo.GetAsync(productDto.Id);
+
+            ObjectMapper.Map<UpdateProductDto, Product>(productDto, productDb);
+
+            var updatedProduct = await _productRepo.UpdateAsync(productDb);
+
+            return ObjectMapper.Map<Product, ReadProductDto>(updatedProduct);
+        }
+
+        //public async Task DeleteAsync(int id)
+        //{
+        //    await _productRepo.DeleteAsync(id);
+        //}
+
+
 
     }
 }
