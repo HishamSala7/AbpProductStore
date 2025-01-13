@@ -1,6 +1,7 @@
 ﻿using ProductStore.Entities;
 using ProductStore.Services.Dtos.CategoriesDtos;
 using ProductStore.Services.Dtos.ReadProductDtos;
+using Serilog;
 using Volo.Abp.Domain.Repositories;
 
 namespace ProductStore.Services.CategoryService
