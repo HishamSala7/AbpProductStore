@@ -5,6 +5,7 @@
     using ProductStore.Entities;
     using ProductStore.Localization;
     using ProductStore.Services.Dtos.CategoriesDtos;
+    using Serilog;
     using Volo.Abp.Domain.Repositories;
     using Volo.Abp.Localization;
 
