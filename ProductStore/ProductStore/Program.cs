@@ -64,7 +64,6 @@ public class Program
 
         Log.Logger = loggerConfiguration.CreateLogger();
 
-
         try
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -78,6 +77,9 @@ public class Program
             await builder.AddApplicationAsync<ProductStoreModule>();
             var app = builder.Build();
             await app.InitializeApplicationAsync();
+
+            var seeder = app.Services.GetRequiredService<IDataSeeder>();
+            await seeder.SeedAsync();
 
             if (IsMigrateDatabase(args))
             {
